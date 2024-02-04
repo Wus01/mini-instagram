@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>피드</title>
+</head>
+<body>
+하이~^^
+<form action="/logout" method="post">
+    <button type="submit">로그아웃</button>
+</form>
+<a href="/">홈</a>
+<a href="#">검색</a>
+<a href="#">메세지</a>
+<!--
+<a th:href="@{/upload/feed}(nic_name=${user.nic_name})}">만들기</a>
+-->
+<a th:href="@{/profile/{nic_name}(nic_name=${user.nic_name})}">프로필</a>
+
+<br>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>프로필 페이지</title>
+</head>
+<body>
+
+<div>
+
+    <form action="upload/feed" method="post" enctype="multipart/form-data">
+
+        <input type="file" multiple="multiple" name="imageFiles" />
+
+        <!--<label><input multiple="multiple" name="imageFiles" /></label>
+        -->
+        <input type="text" placeholder="내용을 입력하세요">
+
+        <button type="submit">등록하기</button>
+    </form>
+
+</div>
+
+</body>
+</html>

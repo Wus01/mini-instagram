@@ -1,0 +1,15 @@
+.square1{
+
+    border-width: thin;
+    border-color: black;
+    border-style: solid;
+    width: 400px;
+    height: 450px;
+}
+.square2{
+    border-width: thin;
+    border-color: black;
+    border-style: solid;
+    width: 400px;
+    height: 100px;
+}
