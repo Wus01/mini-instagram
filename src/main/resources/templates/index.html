@@ -15,6 +15,12 @@
 <!--
 <a th:href="@{/upload/feed}(nic_name=${user.nic_name})}">만들기</a>
 -->
+<form th:action="@{/profile/{nic_name}(nic_name=${user.nic_name})}" th:object="${user}" method="post">
+    <input type="hidden" name="id" th:value="${user.id}">       <!--회원 id 값 profile.html에 전송-->
+    <input type="hidden" name="email" th:value="${user.email}">       <!--회원 id 값 profile.html에 전송-->
+
+    <button type="submit">프로필</button>
+</form>
 <a th:href="@{/profile/{nic_name}(nic_name=${user.nic_name})}">프로필</a>
 
 <br>

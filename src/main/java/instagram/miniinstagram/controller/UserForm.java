@@ -6,6 +6,7 @@ import lombok.Setter;
 
 @Data
 public class UserForm {
+    private Long id;
     private String email;
     private String nic_name;
     private String name;

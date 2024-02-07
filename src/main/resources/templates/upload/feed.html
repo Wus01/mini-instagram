@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
     <title>피드 페이지</title>
 </head>
 <body>
-<form action="/upload/feed" method="post" enctype="multipart/form-data">
-    <input multiple="multiple" type="file" name="imageFiles" />
-    <label><input type="text" name="content" placeholder="내용을 입력해 주세요."/></label>
+<form th:action="@{/upload/feed}" method="post" th:object="${user}" >
+    <input type="hidden" name="id" th:value="${user.id}">       <!--회원 id 값 전송-->
+
+    <input multiple="multiple" type="file" name="imageFiles" />             <!--사진 파일 전송-->
+    <input type="text" name="content" placeholder="내용을 입력해 주세요."/><!--내용 전송-->
     <button type="submit">저장</button>
 
 </form>

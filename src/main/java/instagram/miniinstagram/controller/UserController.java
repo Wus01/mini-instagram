@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -103,11 +104,23 @@ public class UserController {
 */
 
     @GetMapping("/profile/{nic_name}")
-    public String profile(@PathVariable("nic_name") String nic_name, Model model){
-        model.addAttribute("member",nic_name);
-        log.info("nic_name = {}", nic_name);
+    public String profile(@PathVariable("nic_name") String nic_name, Model model, User user){
+
+        model.addAttribute("nic_name",nic_name);      //"nic_name" : nic_name
+        log.info("nic_name = {}", nic_name);            //nic_name 출력`
 
 
+
+        return "profile";
+    }
+
+    @PostMapping("/profile/{nic_name}")
+    public String profilePost(@PathVariable("nic_name") String nic_name, @ModelAttribute("user") User user, Model model){
+        //@ModelAttribute = index에서 생성한 객체에 대한 값을 모델로 다시 받음
+
+        model.addAttribute("user", user);       //index에서 넘어온 id, nic_name, email만 들어 있음
+
+        log.info("<profile.html> user = {}", user);
 
         return "profile";
     }

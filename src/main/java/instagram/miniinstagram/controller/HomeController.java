@@ -18,7 +18,7 @@ public class HomeController {
 
         //세션 값 꺼내오기
         HttpSession session = request.getSession(false);
-        session.getAttribute("member");
+        session.getAttribute("member");     //member에는 회원T의 id, nic_name, password, email이 담김
         User user = (User)session.getAttribute("member");       //getAttribute의 반환값은 객체이기 때문에
                                                                         //강제 형변환(User)를 해줌
 
