@@ -96,25 +96,8 @@ public class UserController {
         return "redirect:/";
     }
 
-    /*
-    @GetMapping("/upload/feed")
-    public String feed(){
-        return "upload/feed";
-    }
-*/
 
     @GetMapping("/profile/{nic_name}")
-    public String profile(@PathVariable("nic_name") String nic_name, Model model, User user){
-
-        model.addAttribute("nic_name",nic_name);      //"nic_name" : nic_name
-        log.info("nic_name = {}", nic_name);            //nic_name 출력`
-
-
-
-        return "profile";
-    }
-
-    @PostMapping("/profile/{nic_name}")
     public String profilePost(@PathVariable("nic_name") String nic_name, @ModelAttribute("user") User user, Model model){
         //@ModelAttribute = index에서 생성한 객체에 대한 값을 모델로 다시 받음
 

@@ -1,0 +1,22 @@
+*{
+    background-color: #ffffff;
+}
+
+#mainLogo {
+    margin: 10px auto 30px;
+    max-width: 85px;
+}
+
+.menu {
+    flex-grow: 1;
+    width: 100%;
+    position: relative;
+
+}
+
+.menuIcon {
+    box-sizing: border-box;
+    display: inline-flex;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}

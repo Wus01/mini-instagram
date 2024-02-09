@@ -7,23 +7,8 @@
 <body>
 
 <div>
-    <!--
-    <form action="upload/feed/{nic_name}" method="post">
-        <input type="hidden" name="nic_name" th:value="${nic_name}">
-        <button type="submit">등록하기</button>
-    </form>
--->
-    <form th:action="@{/upload/feed/}" th:object="${user}" method="post">
-        <input type="hidden" name="id" th:value="${user.id}">       <!--회원 id 값 profile.html에 전송-->
-        <input type="hidden" name="email" th:value="${user.email}">       <!--회원 id 값 profile.html에 전송-->
-        <input type="hidden" name="nic_name" th:value="${user.nic_name}">       <!--회원 id 값 profile.html에 전송-->
 
-        <button type="submit">등록하기</button>
-    </form>
-
-    <a th:href="@{/upload/feed/{nic_name}(nic_name=${nic_name})}">등록하기</a>
-
-
+    <a href="/upload/feed">등록하기</a>
 
 </div>
 

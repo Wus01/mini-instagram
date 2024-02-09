@@ -3,26 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>피드</title>
+    <link rel="stylesheet" type="text/css" href="/css/login.css">
+    <link rel="stylesheet" type="text/css" href="/css/navbar.css">
+
 </head>
 <body>
-하이~^^
-<form action="/logout" method="post">
-    <button type="submit">로그아웃</button>
-</form>
-<a href="/">홈</a>
-<a href="#">검색</a>
-<a href="#">메세지</a>
-<!--
-<a th:href="@{/upload/feed}(nic_name=${user.nic_name})}">만들기</a>
--->
-<form th:action="@{/profile/{nic_name}(nic_name=${user.nic_name})}" th:object="${user}" method="post">
-    <input type="hidden" name="id" th:value="${user.id}">       <!--회원 id 값 profile.html에 전송-->
-    <input type="hidden" name="email" th:value="${user.email}">       <!--회원 id 값 profile.html에 전송-->
+<nav th:replace="~{component/navbar :: navbar}"></nav>
 
-    <button type="submit">프로필</button>
-</form>
-<a th:href="@{/profile/{nic_name}(nic_name=${user.nic_name})}">프로필</a>
+<!--component 폴더에 있는 navbar.html에 있는 fragment 중 fragment 이름이 navbar인 걸로 교체-->
 
-<br>
 </body>
 </html>

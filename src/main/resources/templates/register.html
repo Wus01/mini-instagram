@@ -6,29 +6,25 @@
     <link rel="stylesheet" type="text/css" href="/css/login.css">
 
 </head>
-<body>
-<div class="square1">
-    <h3>Instagram</h3>
-    <form action="/register" method="POST">
-        <label> <input type="text" id="email" name="email" placeholder="이메일 주소"> </label>
-        <br>
-        <label> <input type="text" id="name" name="name" placeholder="이름"> </label>
-        <br>
-        <label> <input type="text" id="nic_name" name="nic_name" placeholder="닉네임"> </label>
-        <br>
-        <label> <input type="password"  name="password" placeholder="비밀번호"></label>
-        <br>
-        <button type="submit">회원가입</button>
+    <body>
+    <div class="container">
+        <div class="loginBox">
+            <img src="images/logo.png" alt="logo.png" id="instaLogo">
+            <form action="/register" method="POST">
+                <input type="text" id="email" name="email" placeholder="이메일 주소" class="inlineToBlock" >
+                <input type="text" id="name" name="name" placeholder="이름" class="inlineToBlock">
+                <input type="text" id="nic_name" name="nic_name" placeholder="닉네임" class="inlineToBlock">
+                <input type="password"  name="password" placeholder="비밀번호" class="inlineToBlock">
 
-        <input type="hidden" name="profile_img" value="null">
-        <input type="hidden" name="webSite" value="null">
-        <input type="hidden" name="introduction" value="null">
+                <button class="inlineToBlock SubmitSet SubmitColor" type="submit">회원가입</button>
+            </form>
+        </div>
+        <div class="otherWay">
+            <p>계정이 있으신가요?
+                <a class="noneUnderline" href="login">로그인 하기 </a>
+            </p>
+        </div>
+    </div>
 
-    </form>
-</div>
-<div class="square2">
-    <p>계정이 있으신가요? <a href="login">로그인 하기</a> </p>
-
-</div>
 </body>
 </html>

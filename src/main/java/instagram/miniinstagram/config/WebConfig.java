@@ -13,7 +13,7 @@ public class WebConfig implements WebMvcConfigurer {
 
                                                         //order(1) == 인터셉터 중 1번째
         registry.addInterceptor(new LoginCheckInterceptor()).order(1)
-                .addPathPatterns("/**").excludePathPatterns("/login", "/logout", "/css/*", "/.ico", "/error", "/register");
+                .addPathPatterns("/**").excludePathPatterns("/login", "/logout", "/css/*", "/.ico", "/error", "/register", "/images/*");
                 //add~~ = 전체 경로에 대해서 인터셉터를 작동시켜라
                 //exclude(~~) = ~~들을 제외해라
     }
