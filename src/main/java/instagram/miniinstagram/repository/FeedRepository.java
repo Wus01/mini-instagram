@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface FeedRepository {
     Feed saveContent(Feed feed);
-    List<ImageFile> saveImage(ImageFile imageFile);
+    Long saveImage(List<ImageFile> imageFiles, Long feedId );
     Optional<Feed> findById(Long id);
 
 

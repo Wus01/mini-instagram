@@ -32,11 +32,11 @@ public class FeedController {
     private final FeedService feedService;
 
     @GetMapping("/upload/feed")
-    public String uploadFeed(HttpServletRequest request, Model model, ImageFile imageFile) throws IOException {
+    public String uploadFeed(HttpServletRequest request, Model model, FeedForm feedForm) throws IOException {
         HttpSession session = request.getSession(false);
         User user1 = (User) session.getAttribute("member");
         model.addAttribute("user",user1);
-        model.addAttribute("image", imageFile);
+
 
         log.info("user = {}", user1);
 
@@ -51,13 +51,16 @@ public class FeedController {
             Feed feed = new Feed();
             feed.setMemberId(memberId);
             feed.setContent(feedForm.getContent());
+
             List<ImageFile> imageFiles = fileStore.storeFiles(feedForm.getImageFiles());
+            feedService.joinImage(imageFiles, feedService.join(feed));
+            //content 먼저 저장하고, 반환받은 feedid값을 가지고 image 저장.
+
 
             log.info("member id = {}", feed.getMemberId());
             log.info("content = {}", feedForm.getContent());
 
-            feedService.join(feed);
-            //feedService.joinImage(imageFiles);
+
 
 
         return "profile";

@@ -3,14 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <title>프로필 페이지</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/login.css">
+    <link rel="stylesheet" type="text/css" href="/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/css/profile.css">
+
 </head>
 <body>
 
-<div>
+    <div style="display:flex; ">
+        <nav th:replace="~{component/navbar :: navbar}"></nav>
 
-    <a href="/upload/feed">등록하기</a>
+        <div class="ProfilePage" style="margin-top: 40px;">
+            <div style="display:flex;">
 
-</div>
+                <div style="flex:auto; width:100px; text-align: right; margin-right: 20px;">
+                    <img src="/images/profileImage_default.png" alt="" id="ProfileImage">
+
+                </div>
+                <div class="HorizontalAlignment" style="flex:auto; text-align: left;">
+                    <div>
+                        <p>
+                            닉네임
+                            <a href="#" style="margin-left:20px;">프로필 편집</a>
+
+                        </p>
+                    </div>
+                    <div>
+                        <p class="pTag">
+                            게시물 팔로워 팔로잉
+                        </p>
+
+                    </div>
+                    <p>
+                        이름
+                    </p>
+                    <p>
+                        소개
+                    </p>
+                </div>
+            </div>
+
+            <div>
+                <a href="/upload/feed" class="aTag noneUnderline" >첫 사진 등록하기</a>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
 
 </body>
 </html>

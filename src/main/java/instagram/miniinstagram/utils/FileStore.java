@@ -34,7 +34,7 @@ public class FileStore {
         String originalFileName = multipartFile.getOriginalFilename();
         String storeFileName = createStoreFileName(originalFileName);
         multipartFile.transferTo(new File(getFullPath(storeFileName)));
-        return new ImageFile(originalFileName, storeFileName);
+        return new ImageFile(originalFileName, storeFileName);      //파일의 원래 이름과 생성된 파일 이름
     }
 
     public List<ImageFile> storeFiles(List<MultipartFile> multipartFile) throws IOException{
@@ -43,6 +43,7 @@ public class FileStore {
         for(int i=0; i< multipartFile.size(); i++){
             imageFiles.add(storeFile(multipartFile.get(i)));
         }
+
 
         return imageFiles;
 

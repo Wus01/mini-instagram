@@ -19,11 +19,11 @@ public class FeedService {
         feedRepository.saveContent(feed);
         return feed.getId();
     }
-/*
-    public Long joinImage(List<ImageFile> imageFile) {
 
-        feedRepository.saveImage(imageFile);
-        return ;
+    public Long joinImage(List<ImageFile> imageFile, Long feedId) {
+
+        feedRepository.saveImage(imageFile, feedId);
+        return feedId;
     }
-*/
+
 }

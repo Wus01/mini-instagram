@@ -1,0 +1,38 @@
+.ProfilePage{
+    flex: auto;
+    text-align: center;
+    margin: 0 auto;
+}
+.HorizontalAlignment{
+    display: inline-block;
+
+}
+
+#ProfileImage {
+    margin: 10px auto 30px;
+    max-width: 160px;
+}
+
+.aTag {
+    font-weight: 600;
+    font-size: 12px;
+    color: #b0d9fb;
+}
+.pTag {
+    word-spacing: 30px;
+}
+
+.ProfileBtnColor{
+    backgroud-color: #a69f9f;
+}
+
+.ModifyBtnSet{
+    height: 37px;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    border: 0px;
+    border-radius: 5px;
+    color: #000000;
+    font-size: 9px;
+    font-weight: 300;
+}

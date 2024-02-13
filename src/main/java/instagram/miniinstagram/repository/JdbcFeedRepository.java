@@ -5,11 +5,15 @@ import instagram.miniinstagram.domain.ImageFile;
 import instagram.miniinstagram.domain.User;
 import instagram.miniinstagram.service.FeedService;
 import instagram.miniinstagram.service.UserService;
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.datasource.DataSourceUtils;
 
 import javax.sql.DataSource;
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.Optional;
 
@@ -64,37 +68,42 @@ public class JdbcFeedRepository implements FeedRepository{
     }
 
     @Override
-    public List<ImageFile> saveImage(ImageFile imageFile) {
+    public Long saveImage(List<ImageFile> imageFiles, Long feedId) {
         String sql = "insert into image(feedid, originalname, storefilename, insertdate) values(?,?,?,?)";
 
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
 
+
+        LocalDateTime now = LocalDateTime.now();
+        //Date date = (Date) Date.from(now.atZone(ZoneId.systemDefault()).toInstant());
+
         try {
             conn = getConnection();
             pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
 
+            for (ImageFile imageFile : imageFiles) {
+                pstmt.setLong (1, feedId);      //받아온 값의 1번 = 게시글 id
+                pstmt.setString (2, imageFile.getOriginalName());      //받아온 값의 2번 = 원래 이미지 이름
+                pstmt.setString (3, imageFile.getStoreFileName());      //받아온 값의 3번 = 생성된 이미지 이름
+                pstmt.setString (4,  now.toString());      //받아온 값의 4번 = 생성된 이미지 이름
 
-            pstmt.setLong (1, imageFile.getFeedId());      //받아온 값의 1번 = 게시글 id
-            pstmt.setString (2, imageFile.getOriginalName());      //받아온 값의 2번 = 원래 이미지 이름
-            pstmt.setString (3, imageFile.getStoreFileName());      //받아온 값의 3번 = 생성된 이미지 이름
+                pstmt.executeUpdate();                      //쿼리 전달(새로 등록할 때)
+                rs = pstmt.getGeneratedKeys();              //저장된 내용들만 가져옴
 
-            pstmt.executeUpdate();                      //쿼리 전달(새로 등록할 때)
-
-            rs = pstmt.getGeneratedKeys();
+                if(rs.next()){
+                    imageFile.setId(rs.getLong("imgid"));      //imgid setting 하는
 
 
-            if(rs.next()){
-                imageFile.setId(rs.getLong(1));
+                }else {
+                    throw new SQLException("id 조회 실패");
 
-
-            }else {
-                throw new SQLException("id 조회 실패");
-
+                }
             }
-            return List.of(imageFile);
+
+            return feedId;
 
         }catch (Exception e){
             throw new IllegalStateException(e);
